@@ -32,13 +32,13 @@ the board will square with each other and merge. 1 tile will randomly appear aft
 
 ### MVP Goals and Schedule
 
-1.MVP
+#### MVP
   -Tiles move all 4 directions and merge when moved into each other
   -A Tile auto generates after every move
   -New game button resets game with just 2 randomly placed tiles
   -Game directions/rules at bottom
 
-2.Post-MVP
+#### Post-MVP
   -Add score and high score to game after every merge
   -Add neon or Cyberpunk styling to game board
   -Add soundtrack to game/sound effects to clicks in-game

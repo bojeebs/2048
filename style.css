@@ -1,0 +1,29 @@
+body {
+  
+  text-align:center;
+
+}
+
+
+#board {
+width: 400px;
+height: 400px;
+background: #BBADA0;
+border: 5px solid #bbada0;
+margin: 0 auto;
+display: flex;
+flex-wrap: wrap;
+}
+
+.squares {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90px;
+  width: 90px;
+  border: 5px solid #8F7A66; 
+  font-size: 50px;
+  font-weight: bold;
+  padding: 0;
+
+}

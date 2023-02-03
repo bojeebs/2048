@@ -30,7 +30,10 @@ the board will square with each other and merge. 1 tile will randomly appear aft
 
 * Game over logic that check game state and number of tiles. 
 
-### MVP Goals and Schedule
+### Schedule
+* Link to Trello>>> https://trello.com/b/QpoEtv89/project-management
+
+### MVP Goals
 
   * Tiles move all 4 directions and merge when moved into each other
 

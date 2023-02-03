@@ -1,4 +1,4 @@
-###### 2048
+# **2048**
 
 #### Description 
 Math based game with moving blocks. Blocks that are the same when moved around 

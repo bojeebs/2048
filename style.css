@@ -5,9 +5,12 @@ body {
 }
 
 
-#board {
+#game-board {
 width: 400px;
 height: 400px;
+display: grid;
+grid-template-columns: repeat(4, 20vmin);
+grid-template-rows: repeat(4, 20vmin);
 background: #BBADA0;
 border: 5px solid #bbada0;
 margin: 0 auto;
@@ -24,6 +27,10 @@ flex-wrap: wrap;
   border: 5px solid #8F7A66; 
   font-size: 50px;
   font-weight: bold;
-  padding: 0;
+  
 
+}
+
+.newBtn {
+  margin: 0 auto;
 }

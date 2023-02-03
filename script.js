@@ -10,6 +10,9 @@ let board = [
 ]
 
 
+
+
+
 //Functions
 // Init 
 // addtile function which i can use as callback for init function and call once after 

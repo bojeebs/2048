@@ -7,8 +7,8 @@ the board will square with each other and merge. 1 tile will randomly appear aft
 
 
 ### How to Get Started
-*1. Design in Figma to nail down exact themes or colors. 
-*2. HTML structure is 4 flex rows with 16 squares roughly 100px's
+-1. Design in Figma to nail down exact themes or colors. 
+-2. HTML structure is 4 flex rows with 16 squares roughly 100px's
 *3. Javascript over functions would look something like this:
 *4. Init function for initalization of game.
 *5. Squares will be put in Array and future functions will access and edit array

@@ -27,6 +27,9 @@ flex-wrap: wrap;
   border: 5px solid #8F7A66; 
   font-size: 50px;
   font-weight: bold;
+
+  /* transition: 100ms ease-in-out; */
+
   
 
 }

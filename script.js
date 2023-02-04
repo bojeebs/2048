@@ -1,7 +1,6 @@
 // Global Variables
 
 // various variables for ids from HTML 
-//If i use a 2d array I think i need to set a row and col variable
 //let square = document.querySelector('.squares')
 //let newGame = document.querySelector('#newBtn')
 
@@ -22,22 +21,43 @@ function init () {
     [0, 0, 0, 0],
     [0, 0, 0, 0]
   ]
-  //addTile() invoking function twice here to add 2 tiles at start to game
+  addTile() 
   //addTile()
 }
-//Do i need to declare row and col variables outside of this scope
-//In the for loops i looked up when going through a matrix there were declaring variables other than i. Why?
+
+
 function addTile () {
   let blankSquare = []
   for (let row = 0; row < board.length; row++) {
-      for (let col = 0; col < board.length; col++) {
+      for (let col = 0; col < [row].length; col++) {
         if (board[row][col] === 0)
         blankSquare.push([row, col]) //<<<<<https://www.freecodecamp.org/news/javascript-2d-arrays/
         console.log(board[row][col]) //<<<<<<<not working
     }
   }
-}
+  if (blankSquare.length === 0) {
+      return
+  } else if(blankSquare.length === 16) {
+      let randomArr = Math.floor(Math.random() * blankSquare.length)
+      let randomSquare = blankSquare[randomArr]
+      let row = randomSquare[0]
+      let col = randomSquare[1]
+      grid[row][col] = 2
+      grid[row][col] = 2
+    } else {
+      let randomArr = Math.floor(Math.random() * blankSquare.length)
+      let randomSquare = blankSquare[randomArr]
+      let row = randomSquare[0]
+      let col = randomSquare[1]
+      grid[row][col] = 2
+    }
+  }   
+
+   
+
+//if statement = if board is empty add 2 random values else add one on player move DRY
 //Code for blank squares here>
+//
 
 
 
@@ -66,16 +86,16 @@ function addTile () {
 
 // document.addEventListener("keyup", function(event) {
 //   switch (?????) {
-//     case "ArrowLeft":
+//     case "keyLeft":
 //       move("left");
 //       break;
-//     case "ArrowRight":
+//     case "keyRight":
 //       move("right");
 //       break;
-//     case "ArrowUp":
+//     case "keyUp":
 //       move("up");
 //       break;
-//     case "ArrowDown":
+//     case "keyDown":
 //       move("down");
 //       break;
 //   }

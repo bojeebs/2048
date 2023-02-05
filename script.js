@@ -3,49 +3,65 @@
 // various variables for ids from HTML 
 //let square = document.querySelector('.squares')
 //let newGame = document.querySelector('#newBtn')
+
+
+
+window.onload = function() {
+  init();
+  };
+
 let board = [
-  [0, 0, 0, 1],
-  [0, 1, 1, 0],
   [0, 0, 0, 0],
-  [0, 0, 0, 1]
+  [0, 0, 0, 0],
+  [0, 0, 0, 0],
+  [0, 0, 1, 0]
 ]
+
 
 
 //Functions
  //<<<got this idea from Kirstina to id each square to help with game state https://stackoverflow.com/questions/9422974/createelement-with-id
-
- // function init () {
-//   for (let row = 0; row < board.length; row++) {
-//     for (let col = 0; col < [row].length; col++) {
-//       let square = document.createElement('div')
-//       square.setAttribute('id', 'square-${row}-${col}')
-//       document.getElementById('board').appendChild(square)
-//       console.log(square)
-//     }
-//   }
-// }
+// this function loops through the array creates a div sets the id to = the row and column from the loop and then display that via textcontent.
 
 
+ function init () {
+  let boardEl = document.getElementById("board");
+  if (!boardEl) return;
+  for (let r = 0; r < board.length; r++) {
+    for (let c = 0; c < board[r].length; c++) {
+      let square = document.createElement("div")
+      square.setAttribute('id', `square-${r}-${c}`)
+      square.textContent = board[r][c]
+      setSquareClass(square, r, c)
+      boardEl.append(square)
+    }
+  }
+}
 
+// i have the function of setSquareClass that callsback and sets the class for all newly created squares and removes 0's from displaying.
+  function setSquareClass(square, r, c) {
+    square.className = '';
+    square.classList.remove(...square.classList);
+    square.classList.add('square');
+    if (board[r][c] > 0) {
+      square.textContent = board[r][c];
+    } else {
+      square.textContent = ""
+    }
+  }
 
+  
 
-
-
-
-
-
-
-
-
-// function addTile () {
-//   let blankSquare = []
-//   for (let row = 0; row < board.length; row++) {
-//       for (let col = 0; col < [row].length; col++) {
-//         if (board[row][col] === 0)
-//         blankSquare.push([row, col]) //<<<<<https://www.freecodecamp.org/news/javascript-2d-arrays/
-//         console.log(board[row][col]) //<<<<<<<not working
-//     }
-//   }
+function addTile () {
+  let blankSquare = []
+  for (let row = 0; row < board.length; row++) {
+      for (let col = 0; col < [row].length; col++) {
+        if (board[row][col] === 0)
+        blankSquare.push([row, col]) //<<<<<https://www.freecodecamp.org/news/javascript-2d-arrays/
+        console.log(board[row][col]) //<<<<<<<not working
+    }
+  }
+}
 //else if for adding 2 random squares if all tiles open or stopping if no tiles open or adding only 1 tile
 
 //   if (blankSquare.length === 0) {

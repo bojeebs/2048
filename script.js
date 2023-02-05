@@ -71,35 +71,43 @@ let board = [
 
 
 //Thanks not instrutor Jeremy
-document.addEventListener("keyup", function(event) {
-  switch (event.move) {
-    case "keyLeft":
-      moveLeft();
-      break;
-    case "keyRight":
-      moveRight();
-      break;
-    case "keyUp":
-      moveUp();
-      break;
-    case "keyDown":
-      moveDown()
-      break;
-  }
-});
+
+// document.addEventListener("keyup", function(event) {
+//   switch (event.move) {
+//     case "keyLeft":
+//       moveLeft();
+//       break;
+//     case "keyRight":
+//       moveRight();
+//       break;
+//     case "keyUp":
+//       moveUp();
+//       break;
+//     case "keyDown":
+//       moveDown()
+//       break;
+//   }
+// });
+
 //https://stackoverflow.com/questions/34950243/how-to-loop-through-an-array-and-get-how-many-zeros-there-are
 // function moveLeft ()
 // //skips over zeros
 //   for (let rowsquare = 0; row < 4; rowsquare++) {
-//     if (rowsquare === 0)
-//     goes to next empty square
+//     if (rowsquare === 0) {
+
+//     }
+    
 //   }
 //   //merge logic
 //   for (let square = 0; square < board.length; square++) {
-//     if (board[row] === board[row-1] 
-//       board[row] *= 2
-//       board[row or col? - 1] = 0
+//     if (board[row] === board[col-1]) {
+//       board[row][col] *= 2
+//       board[row][col-1] = 0
+//     }
+
 //   }
+  
+  
   //logic here for collasping remaining tiles <<<https://byjusexamprep.com/difference-between-for-loop-and-while-loop-i
   //because we dont know the value maybe a while loop
   

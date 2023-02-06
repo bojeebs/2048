@@ -41,11 +41,12 @@ function init () {
   }
 addSquare()
 addSquare()
-
+//know when to walk away and just be lazy
 
 }
 
 // i have the function of setSquareClass that callsback and sets the class for all newly created squares and removes 0's from displaying.
+//Will add color classes to this later if theres enough time 
 function setSquareClass(square, r, c) {
   square.className = '';
   square.classList.remove(...square.classList);
@@ -57,6 +58,9 @@ function setSquareClass(square, r, c) {
   }
 }
 
+//This function adds a square with value of 2 randomly. It does this by looping through the array and storing all rows and columns with a 0 value in 
+//the blankSquare array so only cells with value will be considered for selection. Then a simple if statment does random math * the current length
+// of the blankSquare array and stores it in a variable. the r and c values are then extracted from the selected random square and square to a value of 2. 
 function addSquare() {
   let blankSquare = [];
     for (let r = 0; r < board.length; r++) {

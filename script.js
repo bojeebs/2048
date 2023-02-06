@@ -28,6 +28,7 @@ let board = [
 //and actually show up in the html. 0's appeared on the board so at the tail end of setSquaresClass () theres an if statement to set the value of the textcontent
 //to empty string if value is 0 which basically hides the zeros so only 2+ shows on the board after we invoke our addSquare().
 function init () {
+  console.log(board)
   let boardEl = document.getElementById("board");
   if (!boardEl) return;
   for (let r = 0; r < board.length; r++) {
@@ -44,7 +45,8 @@ addSquare()
 //know when to walk away and just be lazy
 
 }
-
+console.log('after init')
+console.log(board)
 // i have the function of setSquareClass that callsback and sets the class for all newly created squares and removes 0's from displaying.
 //Will add color classes to this later if theres enough time 
 function setSquareClass(square, r, c) {
@@ -57,7 +59,8 @@ function setSquareClass(square, r, c) {
     square.textContent = ""
   }
 }
-
+console.log("after set class")
+console.log(board)
 //This function adds a square with value of 2 randomly. It does this by looping through the array and storing all rows and columns with a 0 value in 
 //the blankSquare array so only cells with value will be considered for selection. Then a simple if statment does random math * the current length
 // of the blankSquare array and stores it in a variable. the r and c values are then extracted from the selected random square and square to a value of 2. 
@@ -78,10 +81,11 @@ function addSquare() {
       board[r][c] = 2;
       let square = document.getElementById(`square-${r}-${c}`)
       square.textContent = board[r][c];
-      console.log('test')
+      
     }
   }
-  
+  console.log("afteraddsquare")
+  console.log(board)
 // else if(blankSquare.length === 0) {
 //   console.log("game is over")
 
@@ -96,6 +100,7 @@ document.onkeydown = function(event) {
   switch (event.keyCode) {
      case 37:
         moveLeft()
+        addSquare()
      break;
      case 38:
         alert('Up key');
@@ -109,7 +114,8 @@ document.onkeydown = function(event) {
 
   }
 }
-
+console.log("switchstatement")
+  console.log(board)
 //https://stackoverflow.com/questions/34950243/how-to-loop-through-an-array-and-get-how-many-zeros-there-are
 
 //run function and animate/merge 
@@ -119,45 +125,51 @@ document.onkeydown = function(event) {
 
 //basically copying whats up above on line 65. 
 function moveLeft () {
+  console.log(board)
   for (let r = 0; r < board.length; r++) {
     let newBoard = []
     for (let c = 0; c < board[r].length; c++) {
       let square = board[r][c];
       if (square !== 0) {
         newBoard.push(square);
-    }
-  }
-   for (let r = 0; r < board.length; r++) {
-    if (board[r] === board[c-1]) {
-      newBoard[r] *= 2
-      //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/splice} 
+    } else if (board[r][c] === board[r][c - 1]) {
+      board[r][c] *= 2
       newBoard.splice(r + 1, 1)
 
       }
     }
-   while (newBoard.length < row.length) {
-      newRow.push(0);
+    while (newBoard.length < 4) {
+      newBoard.push(0);
     }
-    board[i] = newBoard;
-  };
+    board[r] = newBoard;
+    for (let c = 0; c < newBoard.length; c++) {
+      let square = document.getElementById(`square-${r}-${c}`)
+      if (newBoard[c] === 0) {
+        square.classList.add("hidden");
+    } else {
+      square.classList.remove('hidden')
+      square.textContent = newBoard[c]
+   }
+  } 
+ }
 }
-            
+
+;
+console.log("afternewboardarray")
+  console.log(board)
+           
    
   //logic here for collasping remaining tiles <<<https://byjusexamprep.com/difference-between-for-loop-and-while-loop-i
   //because we dont know the value maybe a while loop
 
+//gameUpdate ()
+// get all elements for each square run for loop squares 
+// run through element in correlation to r & c update each innertext = board
+// this array of elements will not match the r's and c's will need develop new method
 
-    
     
   
-  //merge logic
-  // for (let square = 0; square < board.length; square++) {
-  //   if (board[row] === board[col-1]) {
-  //     board[row][col] *= 2
-  //     board[row][col-1] = 0
-  //   }
 
-  // }
   
   
   //logic here for collasping remaining tiles <<<https://byjusexamprep.com/difference-between-for-loop-and-while-loop-i
@@ -166,23 +178,7 @@ function moveLeft () {
 
 
 
-// document.addEventListener("keyup", function(event) {
-//   switch (event.move) {
-//     case "keyLeft":
-//       moveLeft();
-//       console.log('left')
-//       break;
-//     case "keyRight":
-//       moveRight();
-//       break;
-//     case "keyUp":
-//       moveUp();
-//       break;
-//     case "keyDown":
-//       moveDown()
-//       break;
-//   }
-// });
+
 
 
 

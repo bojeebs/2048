@@ -14,7 +14,7 @@ let board = [
   [0, 0, 0, 0],
   [0, 0, 0, 0],
   [0, 0, 0, 0],
-  [0, 0, 1, 0]
+  [0, 0, 0, 0]
 ]
 
 
@@ -23,8 +23,11 @@ let board = [
  //<<<got this idea from Kirstina to id each square to help with game state https://stackoverflow.com/questions/9422974/createelement-with-id
 // this function loops through the array creates a div sets the id to = the row and column from the loop and then display that via textcontent.
 
-
- function init () {
+//Things I learned about init() and setSquareClass()...calling the callback function and textcontent before the append. console log after everystep to isolate the issue.
+//big problem that took forever was that i need to actually add class from css to new squares BEFORE they are appended so the numbers are styled
+//and actually show up in the html. 0's appeared on the board so at the tail end of setSquaresClass () theres an if statement to set the value of the textcontent
+//to empty string if value is 0 which basically hides the zeros so only 2+ shows on the board after we invoke our addSquare().
+function init () {
   let boardEl = document.getElementById("board");
   if (!boardEl) return;
   for (let r = 0; r < board.length; r++) {
@@ -36,52 +39,49 @@ let board = [
       boardEl.append(square)
     }
   }
+addSquare()
+addSquare()
+
+
 }
 
 // i have the function of setSquareClass that callsback and sets the class for all newly created squares and removes 0's from displaying.
-  function setSquareClass(square, r, c) {
-    square.className = '';
-    square.classList.remove(...square.classList);
-    square.classList.add('square');
-    if (board[r][c] > 0) {
-      square.textContent = board[r][c];
-    } else {
-      square.textContent = ""
-    }
-  }
-
-  
-
-function addTile () {
-  let blankSquare = []
-  for (let row = 0; row < board.length; row++) {
-      for (let col = 0; col < [row].length; col++) {
-        if (board[row][col] === 0)
-        blankSquare.push([row, col]) //<<<<<https://www.freecodecamp.org/news/javascript-2d-arrays/
-        console.log(board[row][col]) //<<<<<<<not working
-    }
+function setSquareClass(square, r, c) {
+  square.className = '';
+  square.classList.remove(...square.classList);
+  square.classList.add('square');
+  if (board[r][c] > 0) {
+    square.textContent = board[r][c];
+   } else {
+    square.textContent = ""
   }
 }
-//else if for adding 2 random squares if all tiles open or stopping if no tiles open or adding only 1 tile
 
-//   if (blankSquare.length === 0) {
-//       return
-//   } else if(blankSquare.length === 16) {
-//       let randomArr = Math.floor(Math.random() * blankSquare.length)
-//       let randomSquare = blankSquare[randomArr]
-//       let row = randomSquare[0]                                
-//       let col = randomSquare[1]
-//       grid[row][col] = 2
-//       grid[row][col] = 2
-//     } else {
-//       let randomArr = Math.floor(Math.random() * blankSquare.length)
-//       let randomSquare = blankSquare[randomArr]
-//       let row = randomSquare[0]
-//       let col = randomSquare[1]
-//       grid[row][col] = 2
-//     }
-//   }   
+function addSquare() {
+  let blankSquare = [];
+    for (let r = 0; r < board.length; r++) {
+      for (let c = 0; c < board[r].length; c++) {
+        if (board[r][c] === 0) {
+          blankSquare.push([r, c]);
+        }
+      }
+    }
+    if (blankSquare.length > 0) {
+      let randomNum = Math.floor(Math.random() * blankSquare.length);
+      let randomSquare = blankSquare[randomNum];
+      let r = randomSquare[0];
+      let c = randomSquare[1];
+      board[r][c] = 2;
+      let square = document.getElementById(`square-${r}-${c}`)
+      square.textContent = board[r][c];
+      console.log('test')
+    }
+  }
+  
+// else if(blankSquare.length === 0) {
+//   console.log("game is over")
 
+  //else if for adding 2 random squares if all tiles open or stopping if no tiles open or adding only 1 tile
 //potenially using switch statements for keyupsaddevent listener 
 //https://www.freecodecamp.org/news/javascript-switch-case-js-switch-statement-example/
 
@@ -130,7 +130,14 @@ function addTile () {
 
 
 
-
+//   console.log(blankSquare) 
+//  if(blankSquare.length >= 16) {
+//   let randomNum = Math.floor(Math.random() * blankSquare.length)
+//   let randomSquare = blankSquare[randomNum]
+//   let r = randomSquare[0]                                
+//   let c = randomSquare[1]
+//   board[r][c] = 2
+//   console.log("test") 
 
 
 

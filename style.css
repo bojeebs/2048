@@ -1,5 +1,5 @@
 body {
-  
+  background: #faf8ef;
   text-align: center;
 
 }
@@ -8,23 +8,25 @@ body {
 #board {
 width: 400px;
 height: 400px;
-background: #BBADA0;
-border: 5px solid #a88769;
+background-color: #cdc1b5;
+border: 6px solid #bbada0;
 margin: 0 auto;
 display: flex;
 flex-wrap: wrap;
+border-radius: 5px;
 }
 
 .square {
- 
+  text-align: center;
   justify-content: center;
   align-items: center;
   height: 90px;
   width: 90px;
-  border: 5px solid #8F7A66; 
+  border: 5px solid #bbada0; 
   font-size: 45px;
   font-weight: bold;
-
+  
+  
   /* transition: 100ms ease-in-out; */
 }
 
@@ -34,6 +36,6 @@ flex-wrap: wrap;
 
 
 .x2 {
-  background-color: #BBADA0;
+  background-color: #eee4da;
   color: #727371;
 }

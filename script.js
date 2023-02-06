@@ -92,10 +92,85 @@ function addSquare() {
 
 //Thanks not instrutor Jeremy
 
+document.onkeydown = function(event) {
+  switch (event.keyCode) {
+     case 37:
+        moveLeft()
+     break;
+     case 38:
+        alert('Up key');
+     break;
+     case 39:
+        alert('Right key');
+     break;
+     case 40:
+        alert('Down key');
+     break;
+
+  }
+}
+
+//https://stackoverflow.com/questions/34950243/how-to-loop-through-an-array-and-get-how-many-zeros-there-are
+
+//run function and animate/merge 
+//run check if space is empty or same numerical value either moves or merges
+//based upon what ive looked up your effectively creating a new array and updating the new array to handle the filter zero issue.
+//so creating several variables for handling the new array and using forEach to iterate over those. 
+
+//basically copying whats up above on line 65. 
+function moveLeft () {
+  for (let r = 0; r < board.length; r++) {
+    let newBoard = []
+    for (let c = 0; c < board[r].length; c++) {
+      let square = board[r][c];
+      if (square !== 0) {
+        newBoard.push(square);
+    }
+  }
+   for (let r = 0; r < board.length; r++) {
+    if (board[r] === board[c-1]) {
+      newBoard[r] *= 2
+      //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/splice} 
+      newBoard.splice(r + 1, 1)
+
+      }
+    }
+   while (newBoard.length < row.length) {
+      newRow.push(0);
+    }
+    board[i] = newBoard;
+  };
+}
+            
+   
+  //logic here for collasping remaining tiles <<<https://byjusexamprep.com/difference-between-for-loop-and-while-loop-i
+  //because we dont know the value maybe a while loop
+
+
+    
+    
+  
+  //merge logic
+  // for (let square = 0; square < board.length; square++) {
+  //   if (board[row] === board[col-1]) {
+  //     board[row][col] *= 2
+  //     board[row][col-1] = 0
+  //   }
+
+  // }
+  
+  
+  //logic here for collasping remaining tiles <<<https://byjusexamprep.com/difference-between-for-loop-and-while-loop-i
+  //because we dont know the value maybe a while loop
+  
+
+
+
 // document.addEventListener("keyup", function(event) {
 //   switch (event.move) {
 //     case "keyLeft":
 //       moveLeft();
+//       console.log('left')
 //       break;
 //     case "keyRight":
 //       moveRight();
@@ -108,60 +183,6 @@ function addSquare() {
 //       break;
 //   }
 // });
-
-//https://stackoverflow.com/questions/34950243/how-to-loop-through-an-array-and-get-how-many-zeros-there-are
-// function moveLeft ()
-// //skips over zeros
-//   for (let rowsquare = 0; row < 4; rowsquare++) {
-//     if (rowsquare === 0) {
-
-//     }
-    
-//   }
-//   //merge logic
-//   for (let square = 0; square < board.length; square++) {
-//     if (board[row] === board[col-1]) {
-//       board[row][col] *= 2
-//       board[row][col-1] = 0
-//     }
-
-//   }
-  
-  
-  //logic here for collasping remaining tiles <<<https://byjusexamprep.com/difference-between-for-loop-and-while-loop-i
-  //because we dont know the value maybe a while loop
-  
-
-
-
-//   console.log(blankSquare) 
-//  if(blankSquare.length >= 16) {
-//   let randomNum = Math.floor(Math.random() * blankSquare.length)
-//   let randomSquare = blankSquare[randomNum]
-//   let r = randomSquare[0]                                
-//   let c = randomSquare[1]
-//   board[r][c] = 2
-//   console.log("test") 
-
-
-
-
-
-
-
-//Functions
-// Init √
-// addtile function which i can use as callback for init function and call once after √
-// directional move function that checks the rows squares with logic, squares will square 
-//event listener for keyup arrows
-// game over function
-// restart function
-
-
-
-
-
-
 
 
 

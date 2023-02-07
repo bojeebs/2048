@@ -99,13 +99,16 @@ document.onkeydown = function(event) {
         addSquare()
      break;
      case 38:
-        alert('Up key');
+        moveUp()
+        addSquare()
      break;
      case 39:
-        alert('Right key');
+        moveRight()
+        addSquare()
      break;
      case 40:
-        alert('Down key');
+        moveDown()
+        addSquare()
      break;
 
   }
@@ -119,47 +122,151 @@ document.onkeydown = function(event) {
 //so creating several variables for handling the new array and using forEach to iterate over those. 
 
 //basically copying whats up above on line 65. 
-function moveLeft () {
-  
-  for (let r = 0; r < board.length; r++) {
-    let newBoard = []
-    for (let c = 0; c < board[r].length; c++) {
-      let square = board[r][c];
+
+// function moveLeft () {
+//   for (let r = 0; r < board.length; r++) {
+//     let newBoard = []
+//     for (let c = 0; c < board[r].length; c++) {
+//       let square = board[r][c];
+//       console.log("🚀 ~ file: script.js:128 ~ moveLeft ~ square", square)     
+//       if (square !== 0) {
+//         newBoard.push(square);
+        
+      
+//     } if (board[r][c] === board[r][c-1] && board[r][c] !== 0)  {
+//       newBoard[c] *= 2
+//       // const mergedSquare = newBoard[c] *= 2;
+//       // while (newBoard[c-1] === 0) {
+//       //   newBoard[c-1] = mergedSquare
+//       // }
+//       newBoard[c-1] = 0;
+//       }
+//   }
+//     while (newBoard.length < 4) {
+//       newBoard.push(0);
+//     }
+//     board[r] = newBoard;
+//     for (let c = 0; c < newBoard.length; c++) {
+//       let square = document.getElementById(`square-${r}-${c}`)
+//       if (newBoard[c] === 0) {
+//         square.textContent = ""
+//     } else {
+//       square.classList.remove('hidden')
+//       square.textContent = newBoard[c]
+//     }
+//    }
+//   } 
+//  }
+
+//  function moveRight () {
+//   for (let r = 0; r < board.length; r++) {
+//     let newBoard = []
+//     for (let c = board[r].length - 1; c >= 0; c--) {
+//       let square = board[r][c]   
+//       if (square !== 0) {
+//         newBoard.push(square)
+//       } if (board[r][c] === board[r][c+1] && board[r][c] !== 0)  {
+//         newBoard[newBoard.length - 1] *= 2
+//       // const mergedSquare = newBoard[newBoard.length-1] *= 2;
+//       // while (newBoard[c+1] === 0) {
+//       //   newBoard[c+1] = mergedSquare
+//       // }
+//       newBoard[c+1] = 0
+//       }
+    
+//   }
+//     while (newBoard.length < 4) {
+//       newBoard.push(0)
+//     }
+    
+//     board[r] = newBoard
+//     for (let c = 0; c < newBoard.length; c++) {
+//       let square = document.getElementById(`square-${r}-${3-c}`)
+//       if (newBoard[c] === 0) {
+//         square.textContent = ""
+//     } else {
+//      square.textContent = newBoard[c]
+//     }
+//    }
+//   } 
+//  }
+
+
+// function moveUp() {
+//   for (let c = 0; c < board.length; c++) {
+//     let newBoard = [];
+//     for (let r = 0; r < board[c].length; r++) {
+//       let square = board[r][c]
+//       if (square !== 0) {
+//         newBoard.push(square);
+//       }
+//       if (board[r][c] === board[r][c - 1] && board[r][c] !== 0) {
+//         console.log("🚀 ~ file: script.js:200 ~ moveUp ~ board", board)
+//         newBoard[newBoard.length-1] *= 2;
+//         console.log("🚀 ~ file: script.js:202 ~ moveUp ~ newBoard", newBoard)
+//         newBoard[r][c + 1] = 0;
+//       }
+//     }
+//     while (newBoard.length < 4) {
+//       newBoard.push(0);
+//     }
+//     for (let r = 0; r < newBoard.length; r++) {
+//       board[r][c] = newBoard[r];
+//       let square = document.getElementById(`square-${r}-${c}`);
+//       if (newBoard[r] === 0) {
+//         square.textContent = "";
+//       } else {
+//         square.textContent = newBoard[r];
+//       }
+//     }
+//   }
+// }
+
+function moveDown() {
+  for (let c = 0; c < board.length; c++) {
+    let newBoard = [];
+    for (let r = 0; r < board[c].length; r++) {
+      let square = board[r][c]
       if (square !== 0) {
         newBoard.push(square);
-        
-// ! This code block isnt working for merging squares. The if statement below isnt running. 
-        
-    } if (board[r][c] === newBoard[c+1]) {
-      console.log("🚀 ~ file: script.js:135 ~ moveLeft ~ newBoard", newBoard)
-      newBoard[r][c] *= 2;
-      newBoard[c-1] = 0;
-      
+      }
+      if (board[r][c] === board[r][c + 1] && board[r][c] !== 0) {
+        newBoard[newBoard.length-1] *= 2;
+        board[r][c - 1 ] = 0;
+      }
     }
-  }
     while (newBoard.length < 4) {
       newBoard.push(0);
     }
-    board[r] = newBoard;
-    for (let c = 0; c < newBoard.length; c++) {
-      let square = document.getElementById(`square-${r}-${c}`)
-      if (newBoard[c] === 0) {
-        square.textContent = ""
-    } else {
-      square.classList.remove('hidden')
-      square.textContent = newBoard[c]
+    for (let r = 0; r < newBoard.length; r++) {
+      board[r][c] = newBoard[r];
+      let square = document.getElementById(`square-${r}-${c}`);
+      if (newBoard[r] === 0) {
+        square.textContent = "";
+      } else {
+        square.textContent = newBoard[r];
+      }
     }
-   }
-  } 
- }
+  }
+}
 
 
-;
 
- 
-      // (board[r][c] === board[r][c - 1]) {
-    //   board[r][c] *= 2
-    //   newBoard.splice(c + 1, 1)     
+
+
+
+
+
+
+
+
+
+
+
+
+ //right is r c +1 up is r -1 c down is r +1 c
+
+      
    
   //logic here for collasping remaining tiles <<<https://byjusexamprep.com/difference-between-for-loop-and-while-loop-i
   //because we dont know the value maybe a while loop

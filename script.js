@@ -1,9 +1,6 @@
 // Global Variables
 
-// various variables for ids from HTML 
-//let square = document.querySelector('.squares')
-//let newGame = document.querySelector('#newBtn')
-
+let btn = document.getElementById("newBtn")
 
 
 window.onload = function() {
@@ -123,106 +120,76 @@ document.onkeydown = function(event) {
 
 //basically copying whats up above on line 65. 
 
-// function moveLeft () {
-//   for (let r = 0; r < board.length; r++) {
-//     let newBoard = []
-//     for (let c = 0; c < board[r].length; c++) {
-//       let square = board[r][c];
-//       console.log("🚀 ~ file: script.js:128 ~ moveLeft ~ square", square)     
-//       if (square !== 0) {
-//         newBoard.push(square);
+function moveLeft () {
+  for (let r = 0; r < board.length; r++) {
+    let newBoard = []
+    for (let c = 0; c < board[r].length; c++) {
+      let square = board[r][c];
+      console.log("🚀 ~ file: script.js:128 ~ moveLeft ~ square", square)     
+      if (square !== 0) {
+        newBoard.push(square);
         
       
-//     } if (board[r][c] === board[r][c-1] && board[r][c] !== 0)  {
-//       newBoard[c] *= 2
-//       // const mergedSquare = newBoard[c] *= 2;
-//       // while (newBoard[c-1] === 0) {
-//       //   newBoard[c-1] = mergedSquare
-//       // }
-//       newBoard[c-1] = 0;
-//       }
-//   }
-//     while (newBoard.length < 4) {
-//       newBoard.push(0);
-//     }
-//     board[r] = newBoard;
-//     for (let c = 0; c < newBoard.length; c++) {
-//       let square = document.getElementById(`square-${r}-${c}`)
-//       if (newBoard[c] === 0) {
-//         square.textContent = ""
-//     } else {
-//       square.classList.remove('hidden')
-//       square.textContent = newBoard[c]
-//     }
-//    }
-//   } 
-//  }
+    } if (board[r][c] === board[r][c-1] && board[r][c] !== 0)  {
+      newBoard[c] *= 2
+      // const mergedSquare = newBoard[c] *= 2;
+      // while (newBoard[c-1] === 0) {
+      //   newBoard[c-1] = mergedSquare
+      // }
+      newBoard[c-1] = 0;
+      }
+  }
+    while (newBoard.length < 4) {
+      newBoard.push(0);
+    }
+    board[r] = newBoard;
+    for (let c = 0; c < newBoard.length; c++) {
+      let square = document.getElementById(`square-${r}-${c}`)
+      if (newBoard[c] === 0) {
+        square.textContent = ""
+    } else {
+      square.classList.remove('hidden')
+      square.textContent = newBoard[c]
+    }
+   }
+  } 
+ }
 
-//  function moveRight () {
-//   for (let r = 0; r < board.length; r++) {
-//     let newBoard = []
-//     for (let c = board[r].length - 1; c >= 0; c--) {
-//       let square = board[r][c]   
-//       if (square !== 0) {
-//         newBoard.push(square)
-//       } if (board[r][c] === board[r][c+1] && board[r][c] !== 0)  {
-//         newBoard[newBoard.length - 1] *= 2
-//       // const mergedSquare = newBoard[newBoard.length-1] *= 2;
-//       // while (newBoard[c+1] === 0) {
-//       //   newBoard[c+1] = mergedSquare
-//       // }
-//       newBoard[c+1] = 0
-//       }
+ function moveRight () {
+  for (let r = 0; r < board.length; r++) {
+    let newBoard = []
+    for (let c = board[r].length - 1; c >= 0; c--) {
+      let square = board[r][c]   
+      if (square !== 0) {
+        newBoard.push(square)
+      } if (board[r][c] === board[r][c+1] && board[r][c] !== 0)  {
+        newBoard[newBoard.length - 1] *= 2
+      // const mergedSquare = newBoard[newBoard.length-1] *= 2;
+      // while (newBoard[c+1] === 0) {
+      //   newBoard[c+1] = mergedSquare
+      // }
+      newBoard[c+1] = 0
+      }
     
-//   }
-//     while (newBoard.length < 4) {
-//       newBoard.push(0)
-//     }
+  }
+    while (newBoard.length < 4) {
+      newBoard.push(0)
+    }
     
-//     board[r] = newBoard
-//     for (let c = 0; c < newBoard.length; c++) {
-//       let square = document.getElementById(`square-${r}-${3-c}`)
-//       if (newBoard[c] === 0) {
-//         square.textContent = ""
-//     } else {
-//      square.textContent = newBoard[c]
-//     }
-//    }
-//   } 
-//  }
+    board[r] = newBoard
+    for (let c = 0; c < newBoard.length; c++) {
+      let square = document.getElementById(`square-${r}-${3-c}`)
+      if (newBoard[c] === 0) {
+        square.textContent = ""
+    } else {
+     square.textContent = newBoard[c]
+    }
+   }
+  } 
+ }
 
 
-// function moveUp() {
-//   for (let c = 0; c < board.length; c++) {
-//     let newBoard = [];
-//     for (let r = 0; r < board[c].length; r++) {
-//       let square = board[r][c]
-//       if (square !== 0) {
-//         newBoard.push(square);
-//       }
-//       if (board[r][c] === board[r][c - 1] && board[r][c] !== 0) {
-//         console.log("🚀 ~ file: script.js:200 ~ moveUp ~ board", board)
-//         newBoard[newBoard.length-1] *= 2;
-//         console.log("🚀 ~ file: script.js:202 ~ moveUp ~ newBoard", newBoard)
-//         newBoard[r][c + 1] = 0;
-//       }
-//     }
-//     while (newBoard.length < 4) {
-//       newBoard.push(0);
-//     }
-//     for (let r = 0; r < newBoard.length; r++) {
-//       board[r][c] = newBoard[r];
-//       let square = document.getElementById(`square-${r}-${c}`);
-//       if (newBoard[r] === 0) {
-//         square.textContent = "";
-//       } else {
-//         square.textContent = newBoard[r];
-//       }
-//     }
-//   }
-// }
-
-function moveDown() {
+function moveUp() {
   for (let c = 0; c < board.length; c++) {
     let newBoard = [];
     for (let r = 0; r < board[c].length; r++) {
@@ -230,9 +197,10 @@ function moveDown() {
       if (square !== 0) {
         newBoard.push(square);
       }
-      if (board[r][c] === board[r][c + 1] && board[r][c] !== 0) {
+      
+      if (board[r][c] === board[r-1 > -1 ? r-1 :r][c] && board[r][c] !== 0) {
         newBoard[newBoard.length-1] *= 2;
-        board[r][c - 1 ] = 0;
+        newBoard[r-1 > -1 ? r-1 :r][c] = 0;
       }
     }
     while (newBoard.length < 4) {
@@ -250,9 +218,49 @@ function moveDown() {
   }
 }
 
+// function moveDown() {
+//   for (let c = 0; c < board.length; c++) {
+//     let newBoard = [];
+//     for (let r = 0; r < board[c].length; r++) {
+//       let square = board[r][c]
+//       if (square !== 0) {
+//         newBoard.push(square);
+//       }
+//       if (board[r][c] === board[r -1][c] && board[r][c] !== 0) {
+//         newBoard[newBoard.length -1] *= 2;
+//         newBoard[r][c - 1] = 0;
+//       }
+//     }
+//     while (newBoard.length < 4) {
+//       newBoard.push(0);
+//     }
+//     for (let r = 0; r < newBoard.length; r++) {
+//       board[r][c] = newBoard[r];
+//       let square = document.getElementById(`square-${r}-${c}`);
+//       if (newBoard[r] === 0) {
+//         square.textContent = "";
+//       } else {
+//         square.textContent = newBoard[r];
+//       }
+//     }
+//   }
+// }
 
 
 
+
+// function resetGame() {
+//   board = [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]];
+//   for (let i = 0; i < 16; i++) {
+//     let square = document.getElementById(`square${i}`);
+//     square.textContent = "";
+//   }
+// }
+
+
+// btn.addEventListener(`click`, function(){
+//   resetGame()
+// }) 
 
 
 

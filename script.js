@@ -42,6 +42,12 @@ addSquare()
 
 }
 
+
+btn.addEventListener('click', () => {
+  console.log('button clicked')
+});
+
+
 // i have the function of setSquareClass that callsback and sets the class for all newly created squares and removes 0's from displaying.
 //Will add color classes to this later if theres enough time 
 function setSquareClass(square, r, c) {
@@ -87,7 +93,7 @@ function addSquare() {
 //https://www.freecodecamp.org/news/javascript-switch-case-js-switch-statement-example/
 
 
-//Thanks not instrutor Jeremy
+
 
 document.onkeydown = function(event) {
   switch (event.keyCode) {
@@ -138,7 +144,7 @@ function moveLeft () {
       // }
       newBoard[c-1] = 0;
       }
-  }
+    }
     while (newBoard.length < 4) {
       newBoard.push(0);
     }
@@ -178,7 +184,7 @@ function moveLeft () {
     
     board[r] = newBoard
     for (let c = 0; c < newBoard.length; c++) {
-      let square = document.getElementById(`square-${r}-${3-c}`)
+      let square = document.getElementById(`square-${r}-${c}`)
       if (newBoard[c] === 0) {
         square.textContent = ""
     } else {
@@ -218,49 +224,52 @@ function moveUp() {
   }
 }
 
-// function moveDown() {
-//   for (let c = 0; c < board.length; c++) {
-//     let newBoard = [];
-//     for (let r = 0; r < board[c].length; r++) {
-//       let square = board[r][c]
-//       if (square !== 0) {
-//         newBoard.push(square);
-//       }
-//       if (board[r][c] === board[r -1][c] && board[r][c] !== 0) {
-//         newBoard[newBoard.length -1] *= 2;
-//         newBoard[r][c - 1] = 0;
-//       }
-//     }
-//     while (newBoard.length < 4) {
-//       newBoard.push(0);
-//     }
-//     for (let r = 0; r < newBoard.length; r++) {
-//       board[r][c] = newBoard[r];
-//       let square = document.getElementById(`square-${r}-${c}`);
-//       if (newBoard[r] === 0) {
-//         square.textContent = "";
-//       } else {
-//         square.textContent = newBoard[r];
-//       }
-//     }
-//   }
-// }
+function moveDown() {
+  for (let c = 0; c < board.length; c++) {
+    let newBoard = [];
+    for (let r = 0; r < board[c].length; r++) {
+      let square = board[r][c]
+      if (square !== 0) {
+        newBoard.push(square);
+      }
+      if (board[r][c] === board[r -1][c] && board[r][c] !== 0) {
+        newBoard[newBoard.length -1] *= 2;
+        newBoard[r][c - 1] = 0;
+      }
+    }
+    while (newBoard.length < 4) {
+      newBoard.push(0);
+    }
+    for (let r = 0; r < newBoard.length; r++) {
+      board[r][c] = newBoard[r];
+      let square = document.getElementById(`square-${r}-${c}`);
+      if (newBoard[r] === 0) {
+        square.textContent = "";
+      } else {
+        square.textContent = newBoard[r];
+      }
+    }
+  }
+}
 
 
 
 
 // function resetGame() {
-//   board = [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]];
-//   for (let i = 0; i < 16; i++) {
-//     let square = document.getElementById(`square${i}`);
-//     square.textContent = "";
-//   }
-// }
-
-
-// btn.addEventListener(`click`, function(){
+//   board = [
+//     [0, 0, 0, 0],
+//     [0, 0, 0, 0],
+//     [0, 0, 0, 0],
+//     [0, 0, 0, 0]
+//   ];
+//     addSquare()
+//     addSquare()
+//     }
 //   resetGame()
-// }) 
+
+    btn.addEventListener('click', () => {
+      console.log('button clicked')
+    });
 
 
 
@@ -272,25 +281,21 @@ function moveUp() {
 
 
 
- //right is r c +1 up is r -1 c down is r +1 c
+
+
+
 
       
    
-  //logic here for collasping remaining tiles <<<https://byjusexamprep.com/difference-between-for-loop-and-while-loop-i
-  //because we dont know the value maybe a while loop
+ 
 
-//gameUpdate ()
-// get all elements for each square run for loop squares 
-// run through element in correlation to r & c update each innertext = board
-// this array of elements will not match the r's and c's will need develop new method
+
 
     
   
 
   
   
-  //logic here for collasping remaining tiles <<<https://byjusexamprep.com/difference-between-for-loop-and-while-loop-i
-  //because we dont know the value maybe a while loop
   
 
 

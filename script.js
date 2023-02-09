@@ -1,11 +1,15 @@
 // Global Variables
 
-let btn = document.getElementById("newBtn")
+
 
 
 window.onload = function() {
   init();
-  };
+  btn = document.getElementById("newBtn")
+  btn.addEventListener("click", newGame)
+  
+
+}
 
 let board = [
   [0, 0, 0, 0],
@@ -25,8 +29,7 @@ let board = [
 //and actually show up in the html. 0's appeared on the board so at the tail end of setSquaresClass () theres an if statement to set the value of the textcontent
 //to empty string if value is 0 which basically hides the zeros so only 2+ shows on the board after we invoke our addSquare().
 function init () {
-  let boardEl = document.getElementById("board");
-  if (!boardEl) return;
+  let boardEl = document.getElementById("board")
   for (let r = 0; r < board.length; r++) {
     for (let c = 0; c < board[r].length; c++) {
       let square = document.createElement("div")
@@ -38,24 +41,42 @@ function init () {
   }
 addSquare()
 addSquare()
-//know when to walk away and just be lazy
 
 }
 
 
-btn.addEventListener('click', () => {
-  console.log('button clicked')
-});
+
+// function newGame() {
+//   board = [];
+//   for (let r = 0; r < 4; r++) {
+//     let row = [];
+//     for (let c = 0; c < 4; c++) {
+//       
+     
+//       let square = document.getElementById(`square-${r}-${c}`)
+//       square.textContent = board[r][c]
+//       setSquareClass(square, r, c)
+//     }
+    
+//   }
+
+//   addSquare()
+//   addSquare()
+// }
+
+
+
+
 
 
 // i have the function of setSquareClass that callsback and sets the class for all newly created squares and removes 0's from displaying.
 //Will add color classes to this later if theres enough time 
 function setSquareClass(square, r, c) {
-  square.className = '';
-  square.classList.remove(...square.classList);
-  square.classList.add('square');
+  square.className = ''
+  square.classList.remove(...square.classList)
+  square.classList.add('square')
   if (board[r][c] > 0) {
-    square.textContent = board[r][c];
+    square.textContent = board[r][c]
    } else {
     square.textContent = ""
   }
@@ -69,18 +90,18 @@ function addSquare() {
     for (let r = 0; r < board.length; r++) {
       for (let c = 0; c < board[r].length; c++) {
         if (board[r][c] === 0) {
-          blankSquare.push([r, c]);
+          blankSquare.push([r, c])
         }
       }           
     }
     if (blankSquare.length > 0) {
-      let randomNum = Math.floor(Math.random() * blankSquare.length);
-      let randomSquare = blankSquare[randomNum];
-      let r = randomSquare[0];
-      let c = randomSquare[1];
-      board[r][c] = 2;
+      let randomNum = Math.floor(Math.random() * blankSquare.length)
+      let randomSquare = blankSquare[randomNum]
+      let r = randomSquare[0]
+      let c = randomSquare[1]
+      board[r][c] = 2
       let square = document.getElementById(`square-${r}-${c}`)
-      square.textContent = board[r][c];
+      square.textContent = board[r][c]
       
     }
   }
@@ -126,150 +147,133 @@ document.onkeydown = function(event) {
 
 //basically copying whats up above on line 65. 
 
-function moveLeft () {
-  for (let r = 0; r < board.length; r++) {
-    let newBoard = []
-    for (let c = 0; c < board[r].length; c++) {
-      let square = board[r][c];
-      console.log("🚀 ~ file: script.js:128 ~ moveLeft ~ square", square)     
-      if (square !== 0) {
-        newBoard.push(square);
-        
-      
-    } if (board[r][c] === board[r][c-1] && board[r][c] !== 0)  {
-      newBoard[c] *= 2
-      // const mergedSquare = newBoard[c] *= 2;
-      // while (newBoard[c-1] === 0) {
-      //   newBoard[c-1] = mergedSquare
-      // }
-      newBoard[c-1] = 0;
-      }
-    }
-    while (newBoard.length < 4) {
-      newBoard.push(0);
-    }
-    board[r] = newBoard;
-    for (let c = 0; c < newBoard.length; c++) {
-      let square = document.getElementById(`square-${r}-${c}`)
-      if (newBoard[c] === 0) {
-        square.textContent = ""
-    } else {
-      square.classList.remove('hidden')
-      square.textContent = newBoard[c]
-    }
-   }
-  } 
- }
-
- function moveRight () {
-  for (let r = 0; r < board.length; r++) {
-    let newBoard = []
-    for (let c = board[r].length - 1; c >= 0; c--) {
-      let square = board[r][c]   
-      if (square !== 0) {
-        newBoard.push(square)
-      } if (board[r][c] === board[r][c+1] && board[r][c] !== 0)  {
-        newBoard[newBoard.length - 1] *= 2
-      // const mergedSquare = newBoard[newBoard.length-1] *= 2;
-      // while (newBoard[c+1] === 0) {
-      //   newBoard[c+1] = mergedSquare
-      // }
-      newBoard[c+1] = 0
-      }
+// function moveLeft () {
+//   for (let r = 0; r < board.length; r++) {
+//     let newBoard = []
+//     for (let c = 0; c < board[r].length; c++) {
+//       let square = board[r][c]
+//       console.log("🚀 ~ file: script.js:128 ~ moveLeft ~ square", square)     
+//       if (square !== 0) {
+//         newBoard.push(square)
+//         } if (board[r][c] === board[r][c-1] && board[r][c] !== 0)  {
+//         newBoard[c] *= 2
     
-  }
-    while (newBoard.length < 4) {
-      newBoard.push(0)
-    }
-    
-    board[r] = newBoard
-    for (let c = 0; c < newBoard.length; c++) {
-      let square = document.getElementById(`square-${r}-${c}`)
-      if (newBoard[c] === 0) {
-        square.textContent = ""
-    } else {
-     square.textContent = newBoard[c]
-    }
-   }
-  } 
- }
-
-
-function moveUp() {
-  for (let c = 0; c < board.length; c++) {
-    let newBoard = [];
-    for (let r = 0; r < board[c].length; r++) {
-      let square = board[r][c]
-      if (square !== 0) {
-        newBoard.push(square);
-      }
-      
-      if (board[r][c] === board[r-1 > -1 ? r-1 :r][c] && board[r][c] !== 0) {
-        newBoard[newBoard.length-1] *= 2;
-        newBoard[r-1 > -1 ? r-1 :r][c] = 0;
-      }
-    }
-    while (newBoard.length < 4) {
-      newBoard.push(0);
-    }
-    for (let r = 0; r < newBoard.length; r++) {
-      board[r][c] = newBoard[r];
-      let square = document.getElementById(`square-${r}-${c}`);
-      if (newBoard[r] === 0) {
-        square.textContent = "";
-      } else {
-        square.textContent = newBoard[r];
-      }
-    }
-  }
-}
-
-function moveDown() {
-  for (let c = 0; c < board.length; c++) {
-    let newBoard = [];
-    for (let r = 0; r < board[c].length; r++) {
-      let square = board[r][c]
-      if (square !== 0) {
-        newBoard.push(square);
-      }
-      if (board[r][c] === board[r -1][c] && board[r][c] !== 0) {
-        newBoard[newBoard.length -1] *= 2;
-        newBoard[r][c - 1] = 0;
-      }
-    }
-    while (newBoard.length < 4) {
-      newBoard.push(0);
-    }
-    for (let r = 0; r < newBoard.length; r++) {
-      board[r][c] = newBoard[r];
-      let square = document.getElementById(`square-${r}-${c}`);
-      if (newBoard[r] === 0) {
-        square.textContent = "";
-      } else {
-        square.textContent = newBoard[r];
-      }
-    }
-  }
-}
-
-
-
-
-// function resetGame() {
-//   board = [
-//     [0, 0, 0, 0],
-//     [0, 0, 0, 0],
-//     [0, 0, 0, 0],
-//     [0, 0, 0, 0]
-//   ];
-//     addSquare()
-//     addSquare()
+//       newBoard[c-1] = 0
+//       }
 //     }
-//   resetGame()
+//     while (newBoard.length < 4) {
+//       newBoard.push(0)
+//     }
+//     board[r] = newBoard
+//     for (let c = 0; c < newBoard.length; c++) {
+//       let square = document.getElementById(`square-${r}-${c}`)
+//       if (newBoard[c] === 0) {
+//         square.textContent = ""
+//     } else {
+//       square.classList.remove('hidden')
+//       square.textContent = newBoard[c]
+//     }
+//    }
+//   } 
+//  }
 
-    btn.addEventListener('click', () => {
-      console.log('button clicked')
-    });
+//  function moveRight () {
+//   for (let r = 0; r < board.length; r++) {
+//     let newBoard = []
+//     for (let c = board[r].length - 1; c >= 0; c--) {
+//       let square = board[r][c]   
+//       if (square !== 0) {
+//         newBoard.push(square)
+//       } if (board[r][c] === board[r][c+1] && board[r][c] !== 0)  {
+//         newBoard[newBoard.length - 1] *= 2
+//       // const mergedSquare = newBoard[newBoard.length-1] *= 2;
+//       // while (newBoard[c+1] === 0) {
+//       //   newBoard[c+1] = mergedSquare
+//       // }
+//       newBoard[c+1] = 0
+//       }
+    
+//   }
+//     while (newBoard.length < 4) {
+//       newBoard.push(0)
+//     }
+    
+//     board[r] = newBoard
+//     for (let c = 0; c < newBoard.length; c++) {
+//       let square = document.getElementById(`square-${r}-${c}`)
+//       if (newBoard[c] === 0) {
+//         square.textContent = ""
+//     } else {
+//      square.textContent = newBoard[c]
+//     }
+//    }
+//   } 
+//  }
+
+
+// function moveUp() {
+//   for (let c = 0; c < board.length; c++) {
+//     let newBoard = []
+//     for (let r = 0; r < board[c].length; r++) {
+//       let square = board[r][c]
+//       if (square !== 0) {
+//         newBoard.push(square)
+//       }
+      
+//       if (board[r][c] === board[r-1 > -1 ? r-1 :r][c] && board[r][c] !== 0) {
+//         newBoard[newBoard.length-1] *= 2
+//         newBoard[r-1 > -1 ? r-1 :r][c] = 0
+//       }
+//     }
+//     while (newBoard.length < 4) {
+//       newBoard.push(0)
+//     }
+//     for (let r = 0; r < newBoard.length; r++) {
+//       board[r][c] = newBoard[r]
+//       let square = document.getElementById(`square-${r}-${c}`)
+//       if (newBoard[r] === 0) {
+//         square.textContent = ""
+//       } else {
+//         square.textContent = newBoard[r]
+//       }
+//     }
+//   }
+// }
+
+// function moveDown() {
+//   for (let c = 0; c < board.length; c++) {
+//     let newBoard = []
+//     for (let r = 0; r < board[c].length; r++) {
+//       let square = board[r][c]
+//       if (square !== 0) {
+//         newBoard.push(square)
+//       }
+//       if (board[r][c] === board[r -1][c] && board[r][c] !== 0) {
+//         newBoard[newBoard.length -1] *= 2
+//         newBoard[r][c - 1] = 0
+//       }
+//     }
+//     while (newBoard.length < 4) {
+//       newBoard.push(0)
+//     }
+//     for (let r = 0; r < newBoard.length; r++) {
+//       board[r][c] = newBoard[r]
+//       let square = document.getElementById(`square-${r}-${c}`)
+//       if (newBoard[r] === 0) {
+//         square.textContent = ""
+//       } else {
+//         square.textContent = newBoard[r]
+//       }
+//     }
+//   }
+// }
+
+
+
+
+
+
+
 
 
 

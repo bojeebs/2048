@@ -52,6 +52,7 @@ addSquare()
 // ! i have the function of setSquareClass that callsback and sets the class for all newly created squares and removes 0's from displaying.
 // ! Will add color classes to this later if theres enough time 
 // ! Spread operator spreads elements from class list into individual arguments so each class is passed separtely through .remove method
+
 function setSquareClass(square, r, c) {
   square.className = ''
   square.classList.remove(...square.classList)
@@ -66,6 +67,7 @@ function setSquareClass(square, r, c) {
 // ! This function adds a square with value of 2 randomly. It does this by looping through the array and storing all rows and columns with a 0 value in 
 // ! the blankSquare array so only cells with value will be considered for selection. Then a simple if statment does random math * the current length
 // ! of the blankSquare array and stores it in a variable. the r and c values are then extracted from the selected random square and square to a value of 2. 
+
 function addSquare() {
   let blankSquare = [];
     for (let r = 0; r < board.length; r++) {
@@ -136,6 +138,7 @@ function moveLeft () {
     let newBoard = []
     for (let c = 0; c < board[r].length; c++) {
       let square = board[r][c]
+      console.log("🚀 ~ file: script.js:141 ~ moveLeft ~ square", square)
       console.log("🚀 ~ file: script.js:128 ~ moveLeft ~ square", square)     
       if (square !== 0) {
         newBoard.push(square)
@@ -252,25 +255,6 @@ function moveDown() {
   }
 }
 
-
-
-// function newGame() {
-//   board = [];
-//   for (let r = 0; r < 4; r++) {
-//     let row = [];
-//     for (let c = 0; c < 4; c++) {
-//       
-     
-//       let square = document.getElementById(`square-${r}-${c}`)
-//       square.textContent = board[r][c]
-//       setSquareClass(square, r, c)
-//     }
-    
-//   }
-
-//   addSquare()
-//   addSquare()
-// }
 
 
 
